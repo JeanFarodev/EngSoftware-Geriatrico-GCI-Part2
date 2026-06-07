@@ -2,14 +2,13 @@
 REM =====================================================================
 REM compile_and_test.bat
 REM Script para compilar o projeto GCI e executar os testes JUnit 4
-REM Pré-requisito: Java JDK instalado e os JARs do JUnit na pasta lib\
 REM =====================================================================
 
 SET SRC=src
 SET TEST=test
 SET BIN=bin
 SET LIB=lib
-SET CP=%LIB%\junit-4.13.2.jar;%LIB%\hamcrest-core-1.3.jar
+SET CP=%LIB%\junit-4.13.2.jar;%LIB%\hamcrest-core-1.3.jar;%LIB%\mockito-core-5.11.0.jar;%LIB%\byte-buddy-1.14.12.jar
 
 echo [1] Criando pasta bin...
 if not exist %BIN% mkdir %BIN%
@@ -36,6 +35,9 @@ java -cp %CP%;%BIN% org.junit.runner.JUnitCore ^
   TC12_RegistroAtendimentoValido ^
   TC13_RegistroAtendimentoSemResidente ^
   TC14_HistoricoAtendimentoResidente ^
-  TC15_ValidacaoTurnoEnfermeiro
+  TC15_ValidacaoTurnoEnfermeiro ^
+  MOCK01_CadastroResidenteMock ^
+  MOCK02_EstoqueBaixoMock ^
+  MOCK03_RegistroAtendimentoMock
 
 pause
