@@ -8,7 +8,7 @@ SET SRC=src
 SET TEST=test
 SET BIN=bin
 SET LIB=lib
-SET CP=%LIB%\junit-4.13.2.jar;%LIB%\hamcrest-core-1.3.jar;%LIB%\mockito-core-5.11.0.jar;%LIB%\byte-buddy-1.14.12.jar
+SET CP=%LIB%\junit-4.13.2.jar;%LIB%\hamcrest-core-1.3.jar;%LIB%\mockito-core-5.11.0.jar;%LIB%\byte-buddy-1.14.12.jar;%LIB%\byte-buddy-agent-1.14.12.jar
 
 echo [1] Criando pasta bin...
 if not exist %BIN% mkdir %BIN%
@@ -20,7 +20,7 @@ echo [3] Compilando testes...
 javac -cp %CP%;%BIN% -d %BIN% %TEST%\*.java
 
 echo [4] Executando testes...
-java -cp %CP%;%BIN% org.junit.runner.JUnitCore ^
+java -javaagent:%LIB%\byte-buddy-agent-1.14.12.jar -cp %CP%;%BIN% org.junit.runner.JUnitCore ^
   TC01_CadastroResidenteValido ^
   TC02_CadastroResidenteNomeNulo ^
   TC03_CalculoIdadeResidente ^
