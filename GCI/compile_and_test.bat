@@ -20,7 +20,7 @@ echo [3] Compilando testes...
 javac -cp %CP%;%BIN% -d %BIN% %TEST%\*.java
 
 echo [4] Executando testes...
-java -javaagent:%LIB%\byte-buddy-agent-1.14.12.jar -cp %CP%;%BIN% org.junit.runner.JUnitCore ^
+java -javaagent:%LIB%\byte-buddy-agent-1.14.12.jar -Dnet.bytebuddy.experimental=true -cp %CP%;%BIN% org.junit.runner.JUnitCore ^
   TC01_CadastroResidenteValido ^
   TC02_CadastroResidenteNomeNulo ^
   TC03_CalculoIdadeResidente ^
